@@ -25,7 +25,7 @@
 	- 「變數名稱(N):」=【NODE_PATH】
 	- 「變數值(V):」=【%AppData%\npm\node_modules】
 
-![](.\images\001_NPM_Environment.png)
+![](./images/001_NPM_Environment.png)
 
 ### 設置 Windows 10 作業系統的 Ethereum 以太坊 Node.js 開發環境
 - 執行 `%windir%\system32\cmd.exe` 程式後執行下述指令。
@@ -303,9 +303,9 @@ address:
 
 - 使用 [MyEtherWallet](https://www.myetherwallet.com/) 進行測試：
 	- privKey
-![](.\images\002_PrivKey_Test.png)
+![](./images/002_PrivKey_Test.png)
 	- address
-![](.\images\003_Address_Test.png)
+![](./images/003_Address_Test.png)
 
 - 參考：
 	- StackExchange - [Byte array to hexadecimal and back again in JavaScript](https://bitcoin.stackexchange.com/questions/52727/byte-array-to-hexadecimal-and-back-again-in-javascript)
@@ -377,9 +377,9 @@ address:
 
 - 使用 [MyEtherWallet](https://www.myetherwallet.com/) 進行測試：
 	- privKey
-![](.\images\004_PrivKey_Test.png)
+![](./images/004_PrivKey_Test.png)
 	- address
-![](.\images\005_Address_Test.png)
+![](./images/005_Address_Test.png)
 
 ### 回答 03
 
@@ -473,7 +473,6 @@ recover:
 - What is HD Wallet, BIP32, BIP39 and BIP44?（+3%）
 
 ### 回答
-
 
 - BIP（Bitcoin Improvement Proposals）：可由任何人提出之 Bitcoin 的新功能或改進措施的文件，經審核後會公佈在 [bitcoin/bips](https://github.com/bitcoin/bips) 上。 
 - HD Wallet：採用 BIP 機制的錢包稱為 HD Wallet。Ethereum HD Wallet 錢包則採用 BIP32、BIP39、BIP44 規範，其第一組帳戶路徑為「m／purpose'／coin_type'／account'／change／address_index」=「m／44'／60'／0'／0／0」。
