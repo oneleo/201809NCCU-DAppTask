@@ -9,26 +9,104 @@
 - [SourceTree](https://www.sourcetreeapp.com/)（可選）
 - [Visual Studio Code](https://code.visualstudio.com/Download)（可選）
 
+### 安裝 Node.js 流程
+
+- 進到 Node.js 官網 [https://nodejs.org/en](https://nodejs.org/en)，並點選下載 [LTS（穩定版）](https://nodejs.org/dist/v8.12.0/node-v8.12.0-x64.msi)版（預設是下載到 %USERPROFILE%\Downloads 資料夾內。
+
+![](./images/001_Download_Node.png)
+
+- 檔案下載後，滑鼠連點兩下執行安裝檔。
+
+![](./images/002_Install_Node.png)
+
+- 點選【Next】。
+
+![](./images/003_Install_Node.png)
+
+- 勾選【Iaccept the terms in the License Agreement】同意使用條款 →【Next】。
+
+![](./images/004_Install_Node.png)
+
+- 使用預設的安裝位置，點選【Next】。
+
+![](./images/005_Install_Node.png)
+
+- 預設是全功能安裝，點選【Next】。
+
+![](./images/006_Install_Node.png)
+
+- 點選【Install】後開始安裝。
+
+![](./images/007_Install_Node.png)
+
+- 點選【Finish】完成 Node.js 的安裝。
+
+![](./images/008_Install_Node.png)
+
+
+
+### 設置 Windows 10 作業系統用於 npm 環境變數
+
+- 設定 Windows 環境變數。
+- 請至「控制台」→「系統及安全性」→「系統」→「進階系統設定」→「進階」標籤→「環境變數(N)...」→在「XXX 的使用者變數」內新增、編輯。
+
+
+
+![](./images/017_Set_NPM_Environment.png)
+
+- 點選「Windows 符號」→ 點選【Windows 系統】→ 點選【控制台】
+
+![](./images/011_Set_NPM_Environment.png)
+
+- 點選【系統及安全性】。
+
+![](./images/012_Set_NPM_Environment.png)
+
+- 點選【系統】。
+
+![](./images/013_Set_NPM_Environment.png)
+
+- 點選【進階系統設定】。
+
+![](./images/014_Set_NPM_Environment.png)
+
+- 在出現的「系統內容」視窗後，點選【進階】標籤 → 點選【環境變數(N)...】。
+
+![](./images/015_Set_NPM_Environment.png)
+
+- 在上方「XXX 的使用者變數(U)」中，點選【新增(N)...】。
+
+![](./images/016_Set_NPM_Environment.png)
+
+- 在出現的「新增使用者變數」視窗中，輸入下方數值：
+
+	- 「變數名稱(N):」=【NODE_PATH】
+	- 「變數值(V):」=【%AppData%\npm\node_modules】→ 點選【確定】
+
+![](./images/017_Set_NPM_Environment.png)
+
+- 點選【確定】完成環境變數的設置。
+
+![](./images/018_Set_NPM_Environment.png)
+
 ### 設置 Windows 10 作業系統的 Node.js 開發環境
-- 使用 Administrator 權限執行 `%windir%\system32\cmd.exe` 程式後執行下述指令。
-- 註：安裝過程需耗時 20 分鐘左右，請耐心等待，勿關閉視窗。
-- 註：會將 windows-build-tools 下載至 `%USERPROFILE%\.windows-build-tools` 目錄內。
+
+- 點選「Windows 符號」→ 點選【Windows 系統】→ 在「命令提示字元（%windir%\system32\cmd.exe）」上按滑鼠【右鍵】→ 點選【更多】→【以系統管理員身分執行】。
+
+![](./images/021_Install_Node_Package.png)
+
+- 執行下方指令以進行 Node.js for Windows 必要工具安裝。
+	- 註：安裝過程需耗時 20 分鐘左右，請耐心等待，勿關閉視窗。
+	- 註：會將 windows-build-tools 下載至 `%USERPROFILE%\.windows-build-tools` 目錄內。
 
 ```bash=1
 > npm install --global --production windows-build-tools
 ```
 
-### 設置 Windows 10 作業系統用於 npm 環境變數
-
-- 設定 Windows 環境變數（下方指令為腳本，環境變數請至「控制台」→「系統及安全性」→「系統」→「進階系統設定」→「進階」標籤→「環境變數(N)...」→在「XXX 的使用者變數」內新增、編輯）
-
-	- 「變數名稱(N):」=【NODE_PATH】
-	- 「變數值(V):」=【%AppData%\npm\node_modules】
-
-![](./images/001_NPM_Environment.png)
+![](./images/022_Install_Node_Package.png)
 
 ### 設置 Windows 10 作業系統的 Ethereum 以太坊 Node.js 開發環境
-- 執行 `%windir%\system32\cmd.exe` 程式後執行下述指令。
+- 再次執行【命令提示字元（%windir%\system32\cmd.exe）】後執行下述指令。
 - 註：會將 Node.js 的 Modules 下載至 `%AppData%\npm\node_modules` 內。
 
 ```bash=1
@@ -303,9 +381,9 @@ address:
 
 - 使用 [MyEtherWallet](https://www.myetherwallet.com/) 進行測試：
 	- privKey
-![](./images/002_PrivKey_Test.png)
+![](./images/031_PrivKey_Test.png)
 	- address
-![](./images/003_Address_Test.png)
+![](./images/032_Address_Test.png)
 
 - 參考：
 	- StackExchange - [Byte array to hexadecimal and back again in JavaScript](https://bitcoin.stackexchange.com/questions/52727/byte-array-to-hexadecimal-and-back-again-in-javascript)
@@ -377,9 +455,9 @@ address:
 
 - 使用 [MyEtherWallet](https://www.myetherwallet.com/) 進行測試：
 	- privKey
-![](./images/004_PrivKey_Test.png)
+![](./images/033_PrivKey_Test.png)
 	- address
-![](./images/005_Address_Test.png)
+![](./images/034_Address_Test.png)
 
 ### 回答 03
 
@@ -413,6 +491,8 @@ function toByteArray(hexString) {
 // 引入 npm-library。
 const Wallet = require('ethereumjs-wallet');
 const keccak256 = require('js-sha3').keccak256;
+const fs = require('fs');
+const keystoreFile = './Homework_1/03_keystore';
 
 // 建立一組 keypair。
 const wallet = Wallet.generate();
@@ -440,8 +520,17 @@ console.log("address:\n" + address2);
 let keystore = wallet.toV3String('nccu');
 console.log("keystore:\n" + keystore);
 
-// 使用 nccu 作為密碼將 Private 解密。
-let recoverWallet = Wallet.fromV3(keystore, 'nccu', true);
+// 將 keystore Json 寫入 03_keystore 檔內。
+fs.writeFileSync(keystoreFile, keystore, 'utf8', function (err) {
+    if (err) {
+        console.log("An error occured while writing JSON Object to File.");
+        return console.error(err);
+    }
+});
+
+// 將 keystore Json 讀出後，再使用 nccu 作為密碼將 Private 解密。
+//let recoverWallet = Wallet.fromV3(keystore, 'nccu', true);
+let recoverWallet = Wallet.fromV3(fs.readFileSync(keystoreFile).toString(), 'nccu', true);
 let recoverPrivKey = recoverWallet.getPrivateKey();
 let recoverPrivKeyHex = toHexString(recoverPrivKey);
 console.log("recover:\n" + recoverPrivKeyHex);
@@ -465,6 +554,7 @@ recover:
 - 參考：
 	- StackExchange - [https://ethereum.stackexchange.com/questions/11166/how-to-generate-a-keystore-utc-file-from-the-raw-private-key](https://ethereum.stackexchange.com/questions/11166/how-to-generate-a-keystore-utc-file-from-the-raw-private-key)
 	- StackExchange - [How to decrypt private key form keystore file, without using third party applications?](https://ethereum.stackexchange.com/questions/47031/how-to-decrypt-private-key-form-keystore-file-without-using-third-party-applica)
+	- 菜鳥工具 - [JSON 在線解析](https://c.runoob.com/front-end/53)
 
 ## 3、第 03 題
 
@@ -472,17 +562,19 @@ recover:
 
 - What is HD Wallet, BIP32, BIP39 and BIP44?（+3%）
 
-### 回答
+### 概述
 
 - BIP（Bitcoin Improvement Proposals）：可由任何人提出之 Bitcoin 的新功能或改進措施的文件，經審核後會公佈在 [bitcoin/bips](https://github.com/bitcoin/bips) 上。 
 - HD Wallet：採用 BIP 機制的錢包稱為 HD Wallet。Ethereum HD Wallet 錢包則採用 BIP32、BIP39、BIP44 規範，其第一組帳戶路徑為「m／purpose'／coin_type'／account'／change／address_index」=「m／44'／60'／0'／0／0」。
 - [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)：定義 HD Wallet，可從單個 Seed 產生樹狀結構，來儲存多組 Keypairs，以利備份、移轉至其他裝置、控制權限等。
 - [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki)：將 Seed 用方便記憶 12 個單字組成，稱為助憶詞（Mnemonic Code、Phrase）。
-- [BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki)：基於 BIP32，賦予各層樹狀結構特殊的意義，使得同一組 Seed 可支援多幣種、帳戶等
+- [BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki)：基於 BIP32，賦予各層樹狀結構特殊的意義，使得同一組 Seed 可支援多幣種、帳戶等。
 
-- 參考：
-	- Medium - [【加密貨幣錢包】從 BIP32、BIP39、BIP44 到 Ethereum HD Wallet](https://medium.com/taipei-ethereum-meetup/%E8%99%9B%E6%93%AC%E8%B2%A8%E5%B9%A3%E9%8C%A2%E5%8C%85-%E5%BE%9E-bip32-bip39-bip44-%E5%88%B0-ethereum-hd-%EF%BD%97allet-a40b1c87c1f7)
-	- BIP39 - [助憶詞 Seed 單字列表](https://github.com/bitcoin/bips/blob/master/bip-0039/english.txt)
+### 回答
+
+- 此問題的完整解答，已撰寫成文章並發佈至 Steemit 平台：
+	- [Steemit - 詳解 HD Wallet、BIP-0032、BIP-0039、BIP-0043 及 BIP-0044](https://steemit.com/blockchain/@oneleo/hd-wallet-bip-0032-bip-0039-bip-0043-bip-0044)
+	- [SteemKR - 詳解 HD Wallet、BIP-0032、BIP-0039、BIP-0043 及 BIP-0044](https://steemkr.com/blockchain/@oneleo/hd-wallet-bip-0032-bip-0039-bip-0043-bip-0044)
 
 ## 4、第 04 題
 
@@ -490,7 +582,7 @@ recover:
 
 - What is RFC 6979 for?（+3%）
 
-### 回答
+### 概述
 
 - RFC6979：我們可以使用橢圓曲線密碼學（Elliptic curve cryptography，ECC）來生成私、公鑰對。並使用橢圓曲線數字簽名算法（Elliptic Curve Digital Signature Algorithm，ECDSA）來對文件進行簽章，RFC697 則是講述簽章的過程中 k 值要足夠隨機，否則重覆使用 k 值來進行簽章，駭客可透過多組簽章資訊來反推回私鑰。
 - ECDSA 流程：
@@ -501,7 +593,8 @@ recover:
 	- 計算 s = （Hash（msg）+ x * r）*（k ^（-1））% q，如果 s = 0，重新選取 k 值。
 	- （r, s）構成簽名。
 
-- 參考：
-	- [RFC6979 講解：分分鐘搞懂 RFC6979](http://www.wanbizu.com/baike/201412083991.html)
-	- [DSA 簽名算法筆記](https://my.oschina.net/u/1382972/blog/330657)
-	- Yu-Jing Lin - [Cryptography in Bitcoin](https://docs.google.com/presentation/d/1ER8VOkagsJJJfXKWXpxvBzkcNWHUc-kqQXnvT2Ssyn4)
+### 回答
+
+- 此問題的完整解答，已撰寫成文章並發佈至 Steemit 平台：
+	- [Steemit - 橢圓曲線加密演算法 ECDSA 與 RFC6979 改進提案](https://steemit.com/cryptography/@oneleo/ecdsa-rfc6979)
+	- [SteemKR - 橢圓曲線加密演算法 ECDSA 與 RFC6979 改進提案](https://steemkr.com/cryptography/@oneleo/ecdsa-rfc6979)

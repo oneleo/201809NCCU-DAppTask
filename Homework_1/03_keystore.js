@@ -21,6 +21,8 @@ function toByteArray(hexString) {
 // 引入 npm-library。
 const Wallet = require('ethereumjs-wallet');
 const keccak256 = require('js-sha3').keccak256;
+const fs = require('fs');
+const keystoreFile = './Homework_1/03_keystore';
 
 // 建立一組 keypair。
 const wallet = Wallet.generate();
@@ -48,8 +50,17 @@ console.log("address:\n" + address2);
 let keystore = wallet.toV3String('nccu');
 console.log("keystore:\n" + keystore);
 
-// 使用 nccu 作為密碼將 Private 解密。
-let recoverWallet = Wallet.fromV3(keystore, 'nccu', true);
+// 將 keystore Json 寫入 03_keystore 檔內。
+fs.writeFileSync(keystoreFile, keystore, 'utf8', function (err) {
+    if (err) {
+        console.log("An error occured while writing JSON Object to File.");
+        return console.error(err);
+    }
+});
+
+// 將 keystore Json 讀出後，再使用 nccu 作為密碼將 Private 解密。
+//let recoverWallet = Wallet.fromV3(keystore, 'nccu', true);
+let recoverWallet = Wallet.fromV3(fs.readFileSync(keystoreFile).toString(), 'nccu', true);
 let recoverPrivKey = recoverWallet.getPrivateKey();
 let recoverPrivKeyHex = toHexString(recoverPrivKey);
 console.log("recover:\n" + recoverPrivKeyHex);
