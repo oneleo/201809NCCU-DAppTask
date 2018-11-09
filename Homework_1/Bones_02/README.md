@@ -30,11 +30,11 @@
 
 橢圓曲線一般式如下：
 
-![](https://cdn.steemitimages.com/DQmTwomK5SizaPihNk3SU3bwbWptgWx9ZdR3uE6WemMSRyp/image.png)
+![](https://i.imgur.com/qsaSpQo.png)
 
 而在 ECDSA 內所使用的是特殊規範的橢圓曲線：
 
-![](https://cdn.steemitimages.com/DQmUspo1g27xQmekmnhDvsSBFZVUX3FxxA1vxSjApGJAbEn/image.png)
+![](https://i.imgur.com/C8nEqTT.png)
 
 條件的設定目的是在為讓  x^3 + dx + e = 0 方程式的 x 能夠存在三個不同的（實數或複數）解好處是 ECDSA 在使用此特殊規範的曲線，總是可以同時找到 P、Q、R 三個點，並且這三個點又符合交換群（Abelian Commutative Group）的特性
 
@@ -46,17 +46,17 @@
 
 以現實世界來說，其實就是我們習以為常的「乘法運算」、「加法運算」，像是「2 * 1 = 1 * 2」、「1 +（-1）=（-1）+ 1」等
 
-而在線性代數的世界裡，我們是可以自己定義「運算」的，像是「P 點＊Q 點 = P 點＊Q 點」。
+而在線性代數的世界裡，我們是可以自己定義「運算」的，像是「P 點 ＊ Q 點 = P 點 ＊ Q 點」。
 
-![](https://cdn.steemitimages.com/DQmdWTeMgQ9msfdkKP9aXhFXiB4Aea8aAWYsezzw6An2TDb/image.png)
+![](https://i.imgur.com/BYqm5Oa.png)
 
 在這邊，我們也定義特殊規範的橢圓曲線，它的每一個點都要符合交換群的特性，我們定義一下這個群的符號
 
-![](https://cdn.steemitimages.com/DQmPBffGqPMzMz5db2X58QSLQoAa4ygCpWbxAPkVq41Yaes/image.png)
+![](https://i.imgur.com/b4TmmLc.png)
 
 而交換群的特性，下面僅列出 ECDSA 會用到的部份
 
-![](https://cdn.steemitimages.com/DQmd4Pt7eaeHb4ELBeMTx4yTJQtm1MSvD6FTPmHKRNTJPRo/image.png)
+![](https://i.imgur.com/IPRK4Pr.png)
 
 --------------------------------------------------
 
@@ -66,7 +66,9 @@
 
 我們透過兩種不同的橢圓曲線，分別將 P、Q、R 三點繪畫在座標上，就會很清楚知道它們之間的關係
 
-![](https://cdn.steemitimages.com/DQmQcqbgkek6vwUapMrtwqUFUPEZ1j4De6DHW751xiTV9Gv/image.png)
+### 考慮 G =（E（d, e）, +）=（E（-1, 0）, +）的橢圓曲線
+
+![](https://i.imgur.com/FEhX4Ng.png)
 
 當 P ≠ Q 時：
 
@@ -76,7 +78,9 @@
 
 ![](https://cdn.steemitimages.com/DQmRLgodQwu5shxypAEm642r5E9BXKhau8Benv8U2jh6NF2/image.png)
 
-![](https://cdn.steemitimages.com/DQmVHpiaiS2KS6n3mUqhBzTos9akqL6iVm4mvu8LHejXQMR/image.png)
+### 考慮 G =（E（d, e）, +）=（E（1, 1）, +）的橢圓曲線
+
+![](https://i.imgur.com/NxR2GxV.png)
 
 當 P ≠ Q 時：
 
@@ -92,7 +96,7 @@
 
 因為 P、Q、（-R）三點共線，所以我們可以透過求 P、Q 斜率，計算出 R 點。
 
-![](https://cdn.steemitimages.com/DQmVgJbmE1URUfBp4FHmtM9pvAV2hrFzTLhc3JkuiUc4RGZ/image.png)
+![](https://i.imgur.com/uyK8mSX.png)
 
 --------------------------------------------------
 
@@ -100,7 +104,7 @@
 
 那我們如何進行 ECDSA 點的乘法運算呢？可以視做連續的加法來比照辦理就好
 
-![](https://cdn.steemitimages.com/DQmepvh6EJmPdbVv7sHDjDn7K2AW8a972dR2bbjZjGy3hXA/image.png)
+![](https://i.imgur.com/D6yZFPx.png)
 
 --------------------------------------------------
 
@@ -108,15 +112,15 @@
 
 雖然在橢圓曲線上能夠取得無限多種不同的 P 點及 Q 點，但我們在使用 ECDSA 時並不會無限制的擴張，所以這時會將質數有限體 GF（p）的特性帶入，符號如下：
 
-![](https://cdn.steemitimages.com/DQmTJn144X4d5EDDvHts9u8pyjUhYtHQ6ViJyYnJ3pZuYW3/image.png)
+![](https://i.imgur.com/K1DdUeR.png)
 
 而符合質數有限體的橢圓曲線，符號如下：
 
-![](https://cdn.steemitimages.com/DQmc2Fzf2tna6FENfWXYcf9pzrcezQs6wZVKd8r8q4c8cu1/image.png)
+![](https://i.imgur.com/4tjbPvq.png)
 
 使得 ECDSA 用的橢圓曲線會有如下特性：
 
-![](https://cdn.steemitimages.com/DQmTkX1BQ4dayottxBTKA1FaiT4qXqCiMwoBkgjprZC6KqU/image.png)
+![](https://i.imgur.com/21zuwmX.png)
 
 --------------------------------------------------
 
@@ -128,35 +132,35 @@
 
 註：因為所有的變數會被限制在 13 - 1 = 12 內，所以均要在計算完畢後進行取餘（mod）運算，以限制範圍
 
-![](https://cdn.steemitimages.com/DQmbHXFrcoDeJpYqBVxsC21pr6xa896Wuqt78k9iV1vuE2h/image.png)
+![](https://i.imgur.com/RYNyLiR.png)
 
 來小小測試一下在橢圓曲線上的（1, 4）這一個點，是符合上述條件的
 
-![](https://cdn.steemitimages.com/DQmT3p43ipBdkvazVV3unMAekSr4Z8SJ8rUJtH5MsQj5fsY/image.png)
+![](https://i.imgur.com/PKqQz5V.png)
 
 有了限制條件，我們就可以列舉出所有符合 d = 1，e = 1，p = 13 的橢圓曲線的點，如下：
 
-![](https://cdn.steemitimages.com/DQmPH3FLurbReb5WXKUy7djGykK5XUqgYNN81UBJF488Fjw/image.png)
+![](https://i.imgur.com/OuqNwOJ.png)
 
 還記得群的概念嗎？所有的元素都會有一個反元素
 
-![](https://cdn.steemitimages.com/DQmdq3AKnaXwsqLV1B3n75s5mU417tchzULn8i3seQLZYPn/image.png)
+![](https://i.imgur.com/shKGJ0O.png)
 
-那我們就來測試看看是否所有的點都有符合這個特性，找了一個點（4, 11）來進行測試
+那我們就來測試看看是否所有的點都有符合這個特性，找了一個點（4, 2）來進行測試
 
-![](https://cdn.steemitimages.com/DQmXWF3BpyU6UNTkaDB5U3jVSzU5tZMzFc5dMBVc42Bwjm5/image.png)
+![](https://i.imgur.com/JrRlUcW.png)
 
 可以發現（4, 11）這個點也在 d = 1，e = 1，p = 13 的橢圓曲線內，得以證明確實有符合群的各大特性，所以經過計算，我們就可以列出一個反元素速查表：
 
-| P | -P |
-|:------:|:------:|
-| (0, 1) | (0, 12) |
-| (1, 4) | (1, 9) |
-| (4, 2) | (4, 11) |
-| (5, 1) | (5, 12) |
-| (7, 0) | (7, 0) |
-| (8, 1) | (8, 12) |
-| (10, 6) | (10, 7) |
+| P       | -P       |
+| :-----: | :------: |
+| (0, 1)  | (0, 12)  |
+| (1, 4)  | (1, 9)   |
+| (4, 2)  | (4, 11)  |
+| (5, 1)  | (5, 12)  |
+| (7, 0)  | (7, 0)   |
+| (8, 1)  | (8, 12)  |
+| (10, 6) | (10, 7)  |
 | (11, 2) | (11, 11) |
 
 --------------------------------------------------
@@ -167,19 +171,19 @@
 
 假設 P 點為（4, 2），Q 點為（10, 6）
 
-![](https://cdn.steemitimages.com/DQmSGcyRQHkQqWdKp1y8Ek929PtvivxHJiVW4B7FKkj2QZx/image.png)
+![](https://i.imgur.com/gFygDEV.png)
 
 這邊會讓人不知道如何進行的是分數的取餘計算，下方為計算方法：
 
-![](https://cdn.steemitimages.com/DQmYSnfSujJqw8B4gjxuoa18V1PTfMZvxJyHxZcncheAxcu/image.png)
+![](https://i.imgur.com/qP3hTTo.png)
 
 接下來繼續計算 R 點
 
-![](https://cdn.steemitimages.com/DQmTBkHRTcaNMyvyVqziiSqmCcNksY8XzVdaeNADxY5ADUT/image.png)
+![](https://i.imgur.com/mSU0e6x.png)
 
 計算出來的 R 點也確實在 d = 1，e = 1，p = 13 的橢圓曲線內，同樣符合質數有限體的規範。
 
-![](https://cdn.steemitimages.com/DQmV99wt3HXUGgp9ksF1tn7tpQKpWvw7UeXLdAkGUrLdyHH/image.png)
+![](https://i.imgur.com/IiRVRkW.png)
 
 --------------------------------------------------
 
@@ -187,19 +191,19 @@
 
 接下來要介紹點的乘法，上面有提到點的乘法可以看作是連續的點的加法，在這邊同樣以 P 點為（4, 2）來做計算
 
-![](https://cdn.steemitimages.com/DQmaDFc7GfqwMAxnyYXbdaB6Bmwg92sf1r3QzKASFkMmZpf/image.png)
+![](https://i.imgur.com/EFghfUM.png)
 
 首先計算（4, 2）+（4, 2）
 
-![](https://cdn.steemitimages.com/DQmXbRMkWoFvXTYzi5he34GiNchEjgFHv6kc8TAqwMnzufu/image.png)
+![](https://i.imgur.com/zwfT0TI.png)
 
 我們可以得到 （4, 2）+（4, 2）=（8, 1），仍在體的規範內，再來我們計算（8, 1）+（4, 2）
 
-![](https://cdn.steemitimages.com/DQmebeAYCoyYnsjF1PHDFydPiQ9QzvaMe2dLffG9R6WXZJt/image.png)
+![](https://i.imgur.com/sDnghJ5.png)
 
 最後我們得到（4, 2）+（4, 2）+（4, 2）的答案為（10, 6），證實整個 d = 1，e = 1，p = 13 的橢圓曲線內的點都在體的規範內
 
-![](https://cdn.steemitimages.com/DQmQ6AAnURTiAy2bcGEMxnRtRS1a5QLByrRZMZtocpR44Js/image.png)
+![](https://i.imgur.com/25i2K0U.png)
 
 --------------------------------------------------
 
@@ -207,25 +211,25 @@
 
 在我們了解了橢圓曲線的概論後
 
-我們接著就要透過橢圓曲線來進行資訊簽章，以下是概念圖：
+我們接著就要透過橢圓曲線來進行資訊簽章，以下是概念圖（截取至[維基百科](https://zh.wikipedia.org/wiki/%E6%95%B8%E4%BD%8D%E7%B0%BD%E7%AB%A0)）：
 
 ![](https://cdn.steemitimages.com/DQmQweTHw1KuX32xXi1EbAAjiFqNKpas3nnPduxB2xsLMw7/Digital_Signature_diagram_zh-CN.png)
 
 首先我們要先透過橢圓曲線及私鑰來建立公鑰
 
-![](https://cdn.steemitimages.com/DQmUSud1YyyxSnaQsg3jfdccQSWMaUAGrYFLJunL7rMHA4T/image.png)
+![](https://i.imgur.com/WEQszvR.png)
 
 透過橢圓曲線、私鑰來進行簽章
 
-![](https://cdn.steemitimages.com/DQmSHKAM4L8iK78guui5cCwb86EcJnViZ7kRvMaLppxYamc/image.png)
+![](https://i.imgur.com/xd7IvwD.png)
 
 透過橢圓曲線、公鑰來進行驗章
 
-![](https://cdn.steemitimages.com/DQmQmgFVYGPko8ZNTtjZk8UC4SwXCXxd6FNJdqntm6wJPJS/image.png)
+![](https://i.imgur.com/IwbFt4L.png)
 
 以下證明為何 r = x_c 就代表證明驗章通過
 
-![](https://cdn.steemitimages.com/DQmcryhXykPUDZGypuRLUDudvLpmP8Ct6CNcG59JmAbFLWZ/image.png)
+![](https://i.imgur.com/4mivu0V.png)
 
 --------------------------------------------------
 
@@ -234,12 +238,12 @@
 為什麼 Ephemeral Key k 那麼重要？假設我們每次在進行簽章時都使用相同的 k 值，或是選擇一個沒有那麼隨機產生出來的 k 值，導致駭客可透過反推方式求得 k 值，
 一旦 k 值遭洩，持幣者的 Private Key 也可輕易的被回推計算出來。
 
-![](https://cdn.steemitimages.com/DQmT6NDq3pd7Mva388DxzZF37gfKRJpVkvPSVhm1Ghnw4Q6/image.png)
+![](https://i.imgur.com/CSQHZML.png)
 
 所以這就是為什麼 RFC6979 提出我們需要有較佳的 k 值選法，以下是最簡式，
 使用私鑰、每次都不一樣的資訊來進行 k 值選定，以確保 k 值足夠隨機
 
-![](https://cdn.steemitimages.com/DQmPsCsyurZbHsUa9drGuo53axjDkArnd6GRNRaPtnk8qH9/image.png)
+![](https://i.imgur.com/yyR9usO.png)
 
 --------------------------------------------------
 

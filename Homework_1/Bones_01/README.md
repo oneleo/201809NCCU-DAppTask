@@ -1,3 +1,4 @@
+# 詳解 HD Wallet、BIP-0032、BIP-0039、BIP-0043 及 BIP-0044
 ## 加密貨幣錢包（Cryptocurrency Wallet）
 
 1. 在加密貨幣的世界中，錢包並非儲存加密貨幣的地方。
@@ -6,7 +7,7 @@
 
 3. 錢包可在使用者產生交易（Transaction）時使用私鑰將交易簽章（Digital Signature），而簽章的目的除了確認使用者為貨幣擁有者外，還可確保在交易完成後不可否認（Non-Repudiation）此交易；而儲存加密貨幣的地方則是負責維護區塊鏈（Blockchain）的礦工節點內。
 
-4. 加密貨幣錢包形式多樣，分為離線的冷錢包（Cold Wallet）、在線的熱錢包（Hot Wallet）、印在紙上的紙錢包（Paper Wallet）…等。無論何種形式的錢包，錢包的開發商均需要有一個共同遵循的規範（例如：私鑰為多少位元、如何依據一個亂數產生私鑰等）。
+4. 加密貨幣錢包形式多樣，分為離線的冷錢包（Cold Wallet）、在線的熱錢包（Hot Wallet）、印在紙上的紙錢包（Paper Wallet）… 等。無論何種形式的錢包，錢包的開發商均需要有一個共同遵循的規範（例如：私鑰為多少位元、如何依據一個亂數產生私鑰等）。
 
 --------------------------------------------------
 
@@ -32,13 +33,13 @@
 
 - BIP-0032 是 HD Wallet 的核心提案，在系統使用 [SECP256K1](http://www.secg.org/sec2-v2.pdf) 橢圓曲線加密演算法前提下，我們可用熵（Entropy）函數產生隨機的 32 個 16 進制字元（128 Bits）S，
 
-`S = Entropy 128 Bits`
+`S = Entropy_128_Bits`
 
-- 將 S 字串透過雜湊演算法 [HMAC-SHA512](https://tools.ietf.org/html/rfc4231) 產生一組 64 個 16 進制字元（256 Bits），我們將此 256 Bits 字串作為父擴展私鑰（Parent Extended Private Key）m；另一組 256 Bits 字串作為下一級的鏈碼（Chain Code）c。而 m 可推論成父擴展公鑰（Parent Extended Public Key）M。
+- 將 S 字串透過雜湊演算法 [HMAC-SHA512](https://tools.ietf.org/html/rfc4231) 產生一組 64 個 16 進制字元（256 Bits），我們將（左半邊的）256 Bits 字串作為父擴展私鑰（Parent Extended Private Key）m；另一組（右半邊的）256 Bits 字串作為下一級的鏈碼（Chain Code）c。而 m 可推導成父擴展公鑰（Parent Extended Public Key）M。
 
-`m = Left（HMAC-SHA512（S）, 256）`
+`m = Left（HMAC_SHA512（S）, 256）`
 
-`c = Right（HMAC-SHA512（S）, 256）`
+`c = Right（HMAC_SHA512（S）, 256）`
 
 `M = SECP256K1（m）`
 
@@ -47,7 +48,7 @@
 `Child Private Key（Index = i）`
 `= m / i`
 `= CKDpri（m, i）`
-`= Left（HMAC-SHA512（c, M, i））⊕ m`
+`= Left（HMAC_SHA512（c, M, i）, 256）⊕ m`
 
 ```
 m / 0 = CKDpri（m, 0）
@@ -57,12 +58,14 @@ m / 2 = CKDpri（m, 2）
 m / i = CKDpri（m, i）
 ```
 
+![](https://i.imgur.com/cAfONYE.png)
+
 - 使用增強子私鑰求導（Child Hardened Key Derivation，HKD）函數，我們可以透過父擴展私鑰來產生出 index = i' 子私鑰（Private Child Key）。
 
 `Child Private Key（Index = i'）`
 `= m / i'`
 `= HKD（m, i）`
-`= Left（HMAC-SHA512（c, m, i））⊕ m`
+`= Left（HMAC_SHA512（c, m, i）, 256）⊕ m`
 
 ```
 m / 0' = HKD（m, 0）
@@ -72,12 +75,14 @@ m / 2' = HKD（m, 2）
 m / i' = HKD（m, i）
 ```
 
+![](https://i.imgur.com/BvSt5KO.png)
+
 - 使用子公鑰求導（Child Public Key Derivation，CKDpub）函數，我們可以透過父擴展公鑰來產生出子公鑰（Public Child Key）。
 
 Child Public Key
 `= M / i`
 `= CKDpub（M, i）`
-`= Left（HMAC-SHA512（c, M, i））⊕ M`
+`= Left（HMAC_SHA512（c, M, i）, 256）⊕ M`
 
 ```
 M / 0 = CKDpub（M, 0）
@@ -87,7 +92,9 @@ M / 2 = CKDpub（M, 2）
 M / i = CKDpub（M, i）
 ```
 
-- BIP-0032 改進提案的好處是，我們只要備份、轉移 S，即可透過鑰匙樹（Key Tree）在其他相容 BIT-0032 的裝置上還原私鑰、公鑰及地址。
+![](https://i.imgur.com/9SRXYRz.png)
+
+- BIP-0032 改進提案的好處是，我們只要備份、轉移 S，即可透過鑰匙樹（Key Tree）在其他相容 BIP-0032 的裝置上還原私鑰、公鑰及地址。
 
 --------------------------------------------------
 
@@ -97,23 +104,23 @@ M / i = CKDpub（M, i）
 
 - 熵（Entropy）函數產生隨機的 32 個 16 進制字元（128 Bits ~ 256 Bits）ENT（初始熵長度，Initial Entropy Length），再取 ENT 的位元數除以 32 得到 CS（校驗和長度，Checksum Length）。
 
-- 註：`ENT = Entropy（128 + 32 * N）Bits`，`N = 0 ~ 4`，這邊採 Entropy 128 Bits／12 Words 來作計算。
+- 註：`ENT = Entropy（）= 128 + 32 * N Bits`，`N = 0 ~ 4`，這邊採 Entropy 128 Bits／12 Words 來作計算。
 
-`ENT = Entropy 128 Bits`
+`ENT = Entropy_128_Bits`
 
 `CS = Length（ENT）/ 32`
 
-- 在 ENT 右側串接 SHA256（ENT）右邊的 CS 個字元。
+- 在 ENT 右側串接 SHA256（ENT）左邊的 CS 個字元。
 
-`X = ENT * 2 ^ CS + Right（SHA256（ENT）, CS）`
+`X = ENT *（2 ^ CS）+ Left（SHA256（ENT）, CS）`
 
 - 將 X 每 11 Bits 進行切割生成的助記詞（Generated Mnemonic Sentence，MS）
 
-`MS = Split（X, 11）`
+`MS[] = Split（X, 11）`
 
 - 因為 ENT 位元數範圍為（128 + 32 * N）Bits，N = 0 ~ 4，下表為不同 ENT 位元數時會產生助記詞 MS 數量。
 
-| ENT 位元數 | CS 位元數 | ENT + CS | MS 數量 |
+| Length（ENT） | Length（CS） | Length（ENT）+<br>Length（CS） | Length（MS） |
 |:---------:|:--------:|:--------:|:------:|
 | 128 | 4 | 132 | 12 |
 | 160 | 5 | 165 | 15 |
@@ -127,7 +134,9 @@ M / i = CKDpub（M, i）
 
 - 可以將 12 ~ 24 組的 MS + [Salt](https://en.wikipedia.org/wiki/Salt_(cryptography))（密碼學中加強雜湊亂度用）經過 2048 次的 HMAC-SHA512 計算後取得 BIP-0032 所使用的 S。
 
-`S =（HMAC-SHA512 ^ 2048）（MS + Salt）`
+`S =（HMAC_SHA512 ^ 2048）（MS + Salt）`
+
+![](https://i.imgur.com/FRCVzVz.png)
 
 --------------------------------------------------
 
@@ -138,21 +147,29 @@ M / i = CKDpub（M, i）
 `BIP-0044 改進提案中的中的 Key Tree`
 `= m / 44'`
 `= HKD（m, 44）`
-`= Left（HMAC-SHA512（c, m, 44））⊕ m`
+`= Left（HMAC_SHA512（c, m, 44））⊕ m`
 
 ### [BIP-0044](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki) 改進提案：
 
-- 根據 BIP-0032、BIP-0043 的改進提案，將 Key Tree 的第一級定義為宗旨（Purpose），第二級定義為代幣類型（Coin Type），第三級定義為帳戶（Account），第四級定義為鏈的變化（Change），第五級定義為地址索引（Index）。
+- 根據 BIP-0032、BIP-0043 的改進提案，將 Key Tree 的
+    - 第一級定義為宗旨（Purpose）
+    - 第二級定義為代幣類型（Coin Type）
+    - 第三級定義為帳戶（Account）
+    - 第四級定義為鏈的變化（Change）
+    - 第五級定義為地址索引（Index）
 
 `BIP-0044 的 Key Tree`
-`= CKDpub（CKDpub（SECP256K1（HKD（HKD（HKD（m, i）, j）, m））, n）, o）`
-`= m / i' / j' / m' / n / o`
+`= CKDpub（CKDpub（HKD（HKD（HKD（m, i）, j）, n）, o）, p）`
+`= m / i' / j' / n' / o / p`
 
 `i = Purpose，i = 44 表示 BIP-0044。`
 `j = Coin Type，j = 0 表示比特幣；j = 1 表示比特幣測試鏈；j = 60 表示以太坊。`
-`m = Account，m = 0 表示第一個帳戶；m = 1 表示第二個帳戶。`
-`n = Change，n = 0 表示用於收款的外部鏈（External Chain）；n = 1 表示用於更改地址的內部鏈（Internal Chain）。`
-`o = Index，o = 0 表示第一組地址；o = 1 表示第二組地址。`
+`n = Account，n = 0 表示第一個帳戶；n = 1 表示第二個帳戶。`
+`o = Change，o = 0 表示用於收款的外部鏈（External Chain）；o = 1 表示用於更改地址的內部鏈（Internal Chain）。`
+`p = Index，p = 0 表示第一組地址；p = 1 表示第二組地址。`
+
+![](https://i.imgur.com/hlMvHTw.png)
+
 
 --------------------------------------------------
 
