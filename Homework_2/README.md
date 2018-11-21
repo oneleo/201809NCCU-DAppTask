@@ -16,7 +16,7 @@
 
 ## 1、第 01 題：完成 Bank.sol 智能合約
 
-- 這裡將完成的【[01_Bank.sol](./01_Bank.sol)】檔放置於【%GOPATH%/src/github.com/oneleo/201809-Ethereum-DApp-Development-Homework/Homework_2】內。
+- 這裡將完成的【[01_Bank.sol](./01_Bank.sol)】檔放置於【%GOPATH%\src\github.com\oneleo\201809-Ethereum-DApp-Development-Homework\\[Homework_2](.)】內。
 
 ```solidity=1
 //pragma solidity ^0.4.25;
@@ -218,13 +218,13 @@ contract Bank {
 
 ![](./images/201.png)
 
-- 編譯完成後，ABI 及 BIN 檔會被存放在【%GOPATH%\src\github.com\oneleo\201809-Ethereum-DApp-Development-Homework\Homework_2\[02_Contract](./02_Contract)】資料夾內。
+- 編譯完成後，ABI 及 BIN 檔會被存放在【%GOPATH%\src\github.com\oneleo\201809-Ethereum-DApp-Development-Homework\Homework_2\\[02_Contract](./02_Contract)】資料夾內。
 
 ![](./images/202.png)
 
 ## 3、第 03 題：使用 Web3 部署智能合約
 
-- 這裡將完成的【[03_deploy.js](./03_deploy.js)】檔放置於【%GOPATH%/src/github.com/oneleo/201809-Ethereum-DApp-Development-Homework/Homework_2】內。
+- 這裡將完成的【[03_deploy.js](./03_deploy.js)】檔放置於【%GOPATH%\src\github.com\oneleo\201809-Ethereum-DApp-Development-Homework\\[Homework_2](.)】內。
 
 ```javascript=1
 // 使用 JavaScript 的嚴格模式。
