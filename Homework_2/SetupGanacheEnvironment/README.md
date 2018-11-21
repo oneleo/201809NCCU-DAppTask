@@ -82,7 +82,7 @@ people stand vicious engage cruel solve error power camera cousin maple use
 
 ![](../Images/024.png)
 
-### （15）使用網頁瀏覽器連至「Ganache」官網：【https://truffleframework.com/ganache】→ 點選【DOWNLOAD（WINDOWS）】。
+### （15）使用網頁瀏覽器連至「Ganache」官網：【[https://truffleframework.com/ganache](https://truffleframework.com/ganache)】→ 點選【DOWNLOAD（WINDOWS）】。
 
 註：這邊將 Ganache 安裝程式下載至「%USERPROFILE%\Downloads\」目錄中。
 

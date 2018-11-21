@@ -4,6 +4,7 @@
 # Homework Link
 
 - [Homework 1](./Homework_1)
+- [Homework 2](./Homework_2)
 
 # License
 

@@ -104,7 +104,11 @@
 
 ```bash=1
 > npm install --global ethereumjs-wallet
+> npm install --global ethereumjs-util
 > npm install --global js-sha3
+> npm install --global solc
+> npm install --global web3
+> npm install --global truffle-privatekey-provider
 ```
 
 ### 測試 Ethereum 以太坊 Node.js 開發環境可正常運作
