@@ -396,7 +396,7 @@ provider.engine.stop();
 
 ![](./images/225.png)
 
-- Account 2 覺得 Bank_Coin 幣會大漲，所以用 Bank 帳戶裡的 1 顆以太幣，向 Account 2 購買 1 顆 Bank_Coin 幣，並存至 Bank 帳戶內：
+- Account 2 覺得 Bank_Coin 幣會大漲，所以用 Bank 帳戶裡的 1 顆以太幣，向 Account 1 購買 1 顆 Bank_Coin 幣，並存至 Bank 帳戶內：
 
 ```
 > node .\balance.js
@@ -418,7 +418,7 @@ provider.engine.stop();
 
 ![](./images/228.png)
 
-- Account 1 覺得 Bank 沒有價值，於是將 Bank 的擁有權給充滿信仰的 Account2：
+- Account 1 覺得 Bank 沒有價值，於是將 Bank 的擁有權給充滿信仰的 Account 2：
 
 ```
 > node .\owner.js
@@ -427,3 +427,12 @@ provider.engine.stop();
 ```
 
 ![](./images/229.png)
+
+## 5、第 05 題：使用 Go 語言完成本次作業
+
+- 程式碼如下：
+	- [deploy.go](./05_UsingGo/deploy/deploy.go)
+	- [contract.go](./05_UsingGo/deploy/contract.go)
+	- [exercise.go](./05_UsingGo/exercise/exercise.go)
+
+- 執行細節請[至此頁面](./05_UsingGo)查看。
