@@ -5,6 +5,7 @@
 
 - [Homework 1](./Homework_1)
 - [Homework 2](./Homework_2)
+- [Homework 3](./Homework_3)
 
 # License
 

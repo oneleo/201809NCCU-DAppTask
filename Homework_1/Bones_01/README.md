@@ -79,7 +79,7 @@ m / i' = HKD（m, i）
 
 - 使用子公鑰求導（Child Public Key Derivation，CKDpub）函數，我們可以透過父擴展公鑰來產生出子公鑰（Public Child Key）。
 
-Child Public Key
+`Child Public Key`
 `= M / i`
 `= CKDpub（M, i）`
 `= Left（HMAC_SHA512（c, M, i）, 256）⊕ M`
